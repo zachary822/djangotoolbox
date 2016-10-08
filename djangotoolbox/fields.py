@@ -1,7 +1,10 @@
 # All fields except for BlobField written by Jonas Haag <jonas@lophus.org>
 
 from django.core.exceptions import ValidationError
-from django.utils.importlib import import_module
+try:
+    from django.utils.module_loading import import_module
+except ImportError:
+    from django.utils.importlib import import_module
 from django.db import models
 from django.db.models.fields.subclassing import Creator
 from django.db.utils import IntegrityError
